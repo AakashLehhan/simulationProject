@@ -1,10 +1,7 @@
-
-
 global mx, my
-import pygame
 
 def mc():
-    
+    import pygame
     #initilise the pygame
     pygame.init()
     #create the screen
@@ -27,6 +24,8 @@ def mc():
     gameoverImg=pygame.image.load('icons/game-over.png')
     restartImg=pygame.image.load('icons/restart.png')
     goalImg=pygame.image.load('icons/goal.png')
+    rightImg=pygame.image.load('icons/next.png')
+    leftImg=pygame.image.load('icons/back.png')
     def game():
         #initial values of players
         global mx, my
@@ -62,6 +61,10 @@ def mc():
             screen.blit(restartImg,(x,y))
         def winner(x,y):
             screen.blit(goalImg,(x,y))
+        def left(x,y):
+            screen.blit(leftImg,(x,y))
+        def right(x,y):
+            screen.blit(rightImg,(x,y))
 
 
 
@@ -73,14 +76,16 @@ def mc():
             screen.blit(riverImg,(100,-100))
             screen.blit(riverImg2,(120,-100))
             screen.blit(riverImg3,(147,-100))
+            left(365,20)
+            right(435,20)
 
             for event in pygame.event.get():
                 if event.type==pygame.QUIT:
                     sit=False
+                    break
                 if event.type==pygame.MOUSEBUTTONDOWN:
 
                     mx,my=pygame.mouse.get_pos()
-                    print(mx,my)
 
                     if boatX==280:
                         if mx>=140 and mx<=170 and my>=290 and my<=330:
@@ -191,8 +196,7 @@ def mc():
 
                 if event.type==pygame.MOUSEBUTTONUP:
                     nx,ny=pygame.mouse.get_pos()
-                    print(nx,ny)
-                    if mx>=275 and mx<=440 and my>=410 and my<=470 and nx>=600 and nx<=800:
+                    if (mx>=275 and mx<=440 and my>=410 and my<=470 and nx>=600 and nx<=800) or (mx>=445 and mx<=490 and my>=20 and my<=85):
 
                         if player1X==300 or player1X==350:
                             player1Y=275
@@ -232,7 +236,7 @@ def mc():
                             boatX,boatY=480,361
 
 
-                    if mx>=480 and mx<=635 and my>=365 and my<=417 and nx>=0 and nx<=270 :
+                    if (mx>=480 and mx<=635 and my>=365 and my<=417 and nx>=0 and nx<=270) or(mx>=380 and mx<=415 and my>=20 and my<=85 )  :
 
                         if player1X==500 or player1X==545:
                             player1X,player1Y=150,300
@@ -297,3 +301,4 @@ def mc():
 
             pygame.display.update()
     game()
+mc()
