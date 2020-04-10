@@ -1,9 +1,11 @@
+import os
 def sud():
-    from sudoku import sudoku
-    sudoku()
+    os.system('ttt.py')
 def mn():
-    from mnc import mc
-    mc()
+    os.system('mnc.py')
+def tt():
+    from ttt import ttt
+    ttt()
 def main():
     from tkinter import Tk, Label, Button, Canvas, mainloop, PhotoImage
     master = Tk()
@@ -34,6 +36,7 @@ def main():
 
     sudokuImg = PhotoImage(file = 'icons/sudoku.png')
     mncImg = PhotoImage(file = 'icons/mnc.png')
+    tttImg = PhotoImage(file = 'icons/ttt.png')
 
     sudokuBtn = Button(master,
                        image = sudokuImg,
@@ -48,11 +51,20 @@ def main():
                     activebackground = '#f7ebeb',
                     text = 'mnc',
                     command = mn)
+    tttBtn = Button(master,
+                    image = tttImg,
+                    bd = '0',
+                    bg = '#f7ebeb',
+                    activebackground = '#f7ebeb',
+                    text = 'mnc',
+                    command = tt)
     
-    infoPane.create_window(100, 250,
+    infoPane.create_window(150, 250,
                            window = sudokuBtn)
-    infoPane.create_window(300, 250,
+    infoPane.create_window(250, 250,
                            window = mncBtn)
+    infoPane.create_window(200, 350,
+                           window = tttBtn)
     mainloop()
 
 if __name__ == "__main__":
